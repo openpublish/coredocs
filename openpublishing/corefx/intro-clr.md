@@ -884,7 +884,7 @@ Useful Links
 
 <!-- START: Livefyre Embed -->
 <div id="livefyre-comments"></div>
-<script type="text/javascript" src="//zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js" data-do-not-move="true"></script>
+<script type="text/javascript" src="//cdn.livefyre.com/Livefyre.js" data-do-not-move="true"></script>
 <script type="text/javascript" data-do-not-move="true">
   (function () {
     var articleId = fyre.conv.load.makeArticleId(null);
