@@ -68,6 +68,16 @@
   </Target>
 
   <Target
+    Name="Generate"
+    DependsOnTargets="RestorePackages">
+
+    <MSBuild
+        Targets="Generate"
+        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
+
+  </Target>
+
+  <Target
       Name="Serve"
       DependsOnTargets="RestorePackages">
 
