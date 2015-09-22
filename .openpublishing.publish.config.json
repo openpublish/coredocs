@@ -1,0 +1,13 @@
+{
+    "build_entry_point": "",
+    "docsets_to_publish": [
+        {
+            "docset_name": "openpublishingcorefx",
+            "build_output_subfolder": "openpublishing/corefx",
+            "locale": "en-us",
+            "version": 0,
+            "open_to_public_contributors", "true
+        }
+    ],
+    "notification_subscribers": ["OPBuild@microsoft.com"]
+}

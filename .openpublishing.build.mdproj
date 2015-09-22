@@ -1,7 +1,7 @@
-<Project
-    DefaultTargets="Build"
+<Project 
+    DefaultTargets="Publish"
     ToolsVersion="4.0"
-    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
 
   <PropertyGroup>
     <BuildTaskPackage>OpenPublishingBuild</BuildTaskPackage>
@@ -10,8 +10,8 @@
 
   <PropertyGroup>
     <PackageInstalled>True</PackageInstalled>
-    <PackageInstalled Condition="EXISTS('$(PackageRootFolder)build\Net451\OpenPublishingBuild.props') != 'True'">False</PackageInstalled>
-    <PackageInstalled Condition="EXISTS('$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj') != 'True'">False</PackageInstalled>
+    <PackageInstalled Condition="EXISTS('$(PackageRootFolder)build\net451\OpenPublishingBuild.props') != 'True'">False</PackageInstalled>
+    <PackageInstalled Condition="EXISTS('$(PackageRootFolder)build\net451\OpenPublishingBuild.mdproj') != 'True'">False</PackageInstalled>
   </PropertyGroup>
 
   <!-- nuget Restore Target-->
@@ -21,7 +21,7 @@
     <!-- file, packages.config, and nuget.exe. The rest can be boot strapped by the build process. -->
     <Error Condition="EXISTS('$(MSBuildThisFileDirectory)packages.config') != 'True'" Text="packages.config was not found at the expected location: $(MSBuildThisFileDirectory)." />
     <Error Condition="EXISTS('$(ToolsFolder)NuGet\NuGet.exe') != 'True'" Text="Nuget.exe was not found at the expected location: $(ToolsFolder)NuGet." />
-
+    
     <!-- Use NuGet to pull down any packages -->
     <PropertyGroup>
       <NuGetConfigFileArgument Condition="EXISTS('$(ToolsFolder)NuGet\NuGet.config') == 'True'">-ConfigFile &quot;$(ToolsFolder)NuGet\NuGet.config&quot;</NuGetConfigFileArgument>
@@ -57,53 +57,32 @@
   </Target>
 
   <!-- Build Target -->
-  <Target
+  <Target 
       Name="Build"
       DependsOnTargets="RestorePackages">
 
-    <MSBuild
-        Targets="Build"
-        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
+    <MSBuild 
+        Targets="Build" 
+        Projects="$(PackageRootFolder)build\net451\OpenPublishingBuild.mdproj" />
 
   </Target>
 
-  <Target
-    Name="Generate"
-    DependsOnTargets="RestorePackages">
-
-    <MSBuild
-        Targets="Generate"
-        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
-
-  </Target>
-
-  <Target
-      Name="Serve"
-      DependsOnTargets="RestorePackages">
-
-    <MSBuild
-        Targets="Serve"
-        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
-
-  </Target>
-
-  <Target
+  <Target 
       Name="Clean"
       DependsOnTargets="RestorePackages">
 
-    <MSBuild
-        Targets="Clean"
-        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
+    <MSBuild 
+        Targets="Clean" 
+        Projects="$(PackageRootFolder)build\net451\OpenPublishingBuild.mdproj" />
 
   </Target>
 
-  <Target
+  <Target 
       Name="Rebuild"
       DependsOnTargets="RestorePackages">
 
-    <MSBuild
-        Targets="Rebuild"
-        Projects="$(PackageRootFolder)build\Net451\OpenPublishingBuild.mdproj" />
+    <MSBuild 
+        Targets="Rebuild" 
+        Projects="$(PackageRootFolder)build\net451\OpenPublishingBuild.mdproj" />
   </Target>
-
 </Project>

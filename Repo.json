@@ -1,8 +1,0 @@
-{
-	"docset_files": ["openpublishing/corefx/Docset.json"],
-	"build_config": {
-		"incremental": "true",
-		"force_build": "true",
-		"notification_subscribers": [ "OPBuild@microsoft.com" ]
-	}
-}
