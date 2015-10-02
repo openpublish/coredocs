@@ -1,9 +1,9 @@
 Introduction to the Common Language Runtime (CLR)
 =================================================
 
-By Vance Morrison - 2007
+By Vance Morrison - 2007 
 
-What is the Common Language Runtime (CLR)? To put it succinctly:
+What is the Common Language Runtime (CLR)? To put it succinctly: 
 
 > The Common Language Runtime (CLR) is a complete, high level virtual
 > machine designed to support a broad variety of programming languages
