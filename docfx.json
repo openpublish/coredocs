@@ -1,0 +1,35 @@
+﻿{
+  // "metadata": [
+  //   {
+  //     "src": [
+  //       {
+  //         "files": ["**/*.csproj"],
+  //         "exclude": [ "**/bin/**", "**/obj/**", "_site/**" ], // `exclude` is also relative to `cwd`
+  //         "cwd": "../src",
+  //       }
+  //     ],
+  //     "dest": "obj/docfx/api",
+  //   }
+  // ]
+  "build": { // input could be YAML or MARKDOWN files, outputs are Final-YAML files
+    "content":
+      [
+        {
+          "files": ["**/**"],
+          "cwd": "openpublishing"
+        }
+      ],
+    "resource": [
+        {
+          "files": ["**/images/**"],
+          "cwd": "openpublishing"
+        }
+    ],
+    "externalReference": [
+    ],
+    "dest": "_site",
+    "template": "op.html",
+    "templateFolder": "template",
+    "title": "Doc-as-code documentation",
+  }
+}
