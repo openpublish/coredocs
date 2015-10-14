@@ -1,5 +1,5 @@
 ﻿{
-  "build": { // input could be YAML or MARKDOWN files, outputs are Final-YAML files
+  "build": {
     "content":
       [
         {
