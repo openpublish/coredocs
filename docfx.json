@@ -14,6 +14,7 @@
         }
     ],
     "externalReference": [
-    ]
+    ],
+    "template": "op.html"
   }
 }
