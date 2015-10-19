@@ -1,3 +1,8 @@
+---
+title: Override .NET Class Libraries
+another: Another attribute
+---
+
 .NET Class Libraries
 ====================
 

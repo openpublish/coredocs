@@ -15,6 +15,9 @@
     ],
     "externalReference": [
     ],
+    "globalMetadata": {
+      "Ms.Locale": "en-us"
+    },
     "template": "op.html"
   }
 }
