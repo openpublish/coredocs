@@ -6,7 +6,7 @@
     <OutputFolder Condition="'$(OutputFolder)' == '' ">$(MSBuildThisFileDirectory)_site</OutputFolder>
     <PreviewTemplateName Condition="'$(PreviewTemplateName)' == '' ">msdn.html</PreviewTemplateName>
     <OPTemplateName Condition="'$(OPTemplateName)' == '' ">op.html</OPTemplateName>
-    <LogFile Condition="'$(LogFile)' == ''">$(MSBuildThisFileDirectory)\log\report.txt</LogFile>
+    <LogOutputFolder Condition="'$(LogOutputFolder)' == ''">$(MSBuildThisFileDirectory)\log\report.txt</LogOutputFolder>
     <LogLevel Condition=" '$(LogLevel)' == '' ">Verbose</LogLevel>
   </PropertyGroup>
 
@@ -78,19 +78,19 @@
   <!-- Build Target -->
   <Target DependsOnTargets="RestorePackages" Name="Build">
   <!-- <Target Name="Build"> -->
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocBuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocBuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogOutputFolder);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="Build" Name="Generate">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocPreview" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=False;DocTemplate=$(PreviewTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocPreview" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=False;DocTemplate=$(PreviewTemplateName);LogFile=$(LogOutputFolder);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="Generate" Name="Serve">
     <Message Text="$(BuildProjectPath)" />
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocServe" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=True;DocTemplate=$(PreviewTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocServe" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=True;DocTemplate=$(PreviewTemplateName);LogFile=$(LogOutputFolder);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="RestorePackages" Name="Clean">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocClean" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocClean" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);LogFile=$(LogOutputFolder);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="RestorePackages" Name="Rebuild">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocRebuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);RebuildDoc=True;OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocRebuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);RebuildDoc=True;OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogOutputFolder);LogLevel=$(LogLevel)"/>
   </Target>
 </Project>
