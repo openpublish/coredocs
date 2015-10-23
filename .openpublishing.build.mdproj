@@ -6,6 +6,8 @@
     <OutputFolder Condition="'$(OutputFolder)' == '' ">$(MSBuildThisFileDirectory)_site</OutputFolder>
     <PreviewTemplateName Condition="'$(PreviewTemplateName)' == '' ">msdn.html</PreviewTemplateName>
     <OPTemplateName Condition="'$(OPTemplateName)' == '' ">op.html</OPTemplateName>
+    <LogFile Condition="'$(LogFile)' == ''">$(MSBuildThisFileDirectory)\log\report.txt</LogFile>
+    <LogLevel Condition=" '$(LogLevel)' == '' ">Verbose</LogLevel>
   </PropertyGroup>
 
   <!-- nuget Restore Target-->
@@ -62,27 +64,33 @@
       <NuGetConfigFileArgument Condition="EXISTS('$(ToolsFolder)NuGet\NuGet.config') == 'True'">-ConfigFile &quot;$(ToolsFolder)NuGet\NuGet.config&quot;</NuGetConfigFileArgument>
     </PropertyGroup>
     <Exec Command="&quot;$(ToolsFolder)NuGet\NuGet.exe&quot; restore &quot;.\packages.config&quot; -PackagesDirectory &quot;.\packages&quot; $(NuGetConfigFileArgument)" Condition="$(PackageInstalled) != 'True'"/>
+
     <!-- Update packages.config file's version back to "latest" string-->
+    <XmlPoke
+       Condition="$(UseLatestPackage)"
+       XmlInputPath=".\packages.config"
+       Query="//packages/package[@id='$(BuildTaskPackage)']/@version"
+       Value="$(PackageVersion)" />
   </Target>
-  <PropertyGroup>
-    <DocfxConfigFile Condition=" '$(DocfxConfigFile)' == '' ">$(MSBuildProjectDirectory)/docfx.json</DocfxConfigFile>
-    <!-- <BuildProjectPath>E:\Repo1\docfx\src\nuspec\docfx.msbuild\bin\Debug\build\docfx.msbuild.targets</BuildProjectPath> -->
-  </PropertyGroup>
+  <ItemGroup>
+    <DocfxConfigFile Include = "**\docfx.json" Exclude = "packages\**\docfx.json"/>
+  </ItemGroup>
   <!-- Build Target -->
   <Target DependsOnTargets="RestorePackages" Name="Build">
   <!-- <Target Name="Build"> -->
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocBuild" Properties="DocfxConfigFile=$(DocfxConfigFile);OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocBuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="Build" Name="Generate">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocPreview" Properties="DocfxConfigFile=$(DocfxConfigFile);OutputFolder=$(OutputFolder);IsServing=False;DocTemplate=$(PreviewTemplateName)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocPreview" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=False;DocTemplate=$(PreviewTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
   </Target>
-  <Target DependsOnTargets="Build" Name="Serve">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocPreview" Properties="DocfxConfigFile=$(DocfxConfigFile);OutputFolder=$(OutputFolder);IsServing=True;DocTemplate=$(PreviewTemplateName)"/>
+  <Target DependsOnTargets="Generate" Name="Serve">
+    <Message Text="$(BuildProjectPath)" />
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocServe" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);IsServing=True;DocTemplate=$(PreviewTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="RestorePackages" Name="Clean">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocClean" Properties="DocfxConfigFile=$(DocfxConfigFile);OutputFolder=$(OutputFolder)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocClean" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);OutputFolder=$(OutputFolder);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
   </Target>
   <Target DependsOnTargets="RestorePackages" Name="Rebuild">
-    <MSBuild Projects="$(BuildProjectPath)" Targets="DocRebuild" Properties="DocfxConfigFile=$(DocfxConfigFile);RebuildDoc=True;OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName)"/>
+    <MSBuild Projects="$(BuildProjectPath)" Targets="DocRebuild" Properties="DocfxConfigFile=%(DocfxConfigFile.FullPath);RebuildDoc=True;OutputFolder=$(OutputFolder);DocTemplate=$(OPTemplateName);LogFile=$(LogFile);LogLevel=$(LogLevel)"/>
   </Target>
 </Project>
