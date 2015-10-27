@@ -1,0 +1,59 @@
+theme: hyde
+layout: index
+learnmore:
+  description: Keep your employees productive on their favorite apps and devices—and your company data protected. 
+  background-image: "themes/Hyde/images/MSFT_DMABanners_Computer-Safe.png"
+  articles:
+   - content-icon: "/themes/Hyde/images/charm1_white.png"
+     header: Enterprise Grade Security for your organization
+     description: Encrypt important files and data to ensure only the right people have access. Identify advanced persistent threats before they cause damage to your organization.
+   - content-icon: "/themes/Hyde/images/charm2_white.png"
+     header: Manage iOS, Android, Windows—from one place
+     description: Be ready for whatever employees bring to work—and manage their mobile devices and PCs from a single console.
+   - content-icon: "/themes/Hyde/images/charm3_white.png"
+     header: Keep work at work
+     description: Help employees be more productive, and keep corporate and personal apps and data separated.
+   - content-icon: "/themes/Hyde/images/charm4_white.png"
+     header: Enterprise Grade Security for your organization
+     description: Encrypt important files and data to ensure only the right people have access. Identify advanced persistent threats before they cause damage to your organization.
+guidesteps:
+  - image: "/themes/Hyde/images/MSFT_EM_Icons_Blue_01.png"
+    subtitle: MICROSOFT ADVANCED THREAT ANALYTICS
+    short-description: Behavioral analysis for advanced threat detection
+    description: Sophisticated, automated behavioral analytics that help you identify suspicious activities and advanced threats in near real time, with simple, actionable reporting.
+  - image: "/themes/Hyde/images/MSFT_EM_Icons_Blue_02.png"
+    subtitle: AZURE ACTIVE DIRECTORY PREMIUM
+    short-description: Identity & access management in the cloud
+    description: Enterprise-grade identity and access management for nearly any app or device, cloud or on-premises. Delivers single sign-on, multi-factor authentication, self-service passwords, and more.
+  - image: "/themes/Hyde/images/MSFT_EMS_MIMIcons_CloudReady.png"
+    subtitle: MICROSOFT INTUNE
+    short-description: Simpler management of apps & devices
+    description: Cloud-based enterprise mobility management that helps you control employee access to corporate applications and data on virtually any device.
+  - image: "/themes/Hyde/images/MSFT_EMS_MIMIcons_Enhanced.png"
+    subtitle: AZURE RIGHTS MANAGEMENT
+    short-description: Protect your information wherever it goes
+    description: Comprehensive encryption, identity, and authorization policies designed to secure corporate files and email across phones, tablets, and PCs.
+  - image: "/themes/Hyde/images/MSFT_EMS_MIMIcons_OnPremise.png"
+    subtitle: AZURE REMOTEAPP
+    short-description: Run Windows apps anywhere
+    description: Keep employees productive on iOS, Mac OS X, Android and Windows devices by running Windows apps in the cloud, where they’re easy to scale and update.
+  - image: "/themes/Hyde/images/MSFT_EMS_MIMIcons_Secure.png"
+    subtitle: MICROSOFT IDENTITY MANAGER
+    short-description: On-premises identity and access management
+    description: Synchronize identities between directories, databases and applications. Enable self-service password, group and certificate management. Increase admin security and thwart identity theft with policies, privileged access and roles.
+
+connect:
+  title: Scenarios
+  partners:
+    - name: Evaluate
+      avatar: "/themes/Hyde/images/evaluate.png"
+    - name: Getting Startted
+      avatar: "/themes/Hyde/images/getting-started.png"
+    - name: Deploy
+      avatar: "/themes/Hyde/images/deploy.png"
+    - name: Trouble Shooting
+      avatar: "/themes/Hyde/images/troubleshooting.png"
+quote: 
+  quote_data: Microsoft a Visionary in Gartner’s Magic Quadrant for Enterprise Mobility Management Suites
+  description: This Magic Quadrant rates vendors on how they help integrate mobile devices into security frameworks and systems.
+  

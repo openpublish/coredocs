@@ -1,5 +1,5 @@
 {
     "docset_files": [
-            "openpublishing/corefx/.openpublishing.build.docset.config.json"
+            "openpublishing/docs/.openpublishing.build.docset.config.json"
     ]
 }

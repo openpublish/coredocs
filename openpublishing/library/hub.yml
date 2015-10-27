@@ -1,0 +1,18 @@
+theme: hyde
+layout: hub
+learnmore:
+  description: Keep your employees productive on their favorite apps and devices—and your company data protected. 
+  background-image: "themes/Hyde/images/MSFT_DMABanners_Computer-Safe.png"
+  articles:
+   - content-icon: "/themes/Hyde/images/charm1_white.png"
+     header: Enterprise Grade Security for your organization
+     description: Encrypt important files and data to ensure only the right people have access. Identify advanced persistent threats before they cause damage to your organization.
+   - content-icon: "/themes/Hyde/images/charm2_white.png"
+     header: Manage iOS, Android, Windows—from one place
+     description: Be ready for whatever employees bring to work—and manage their mobile devices and PCs from a single console.
+   - content-icon: "/themes/Hyde/images/charm3_white.png"
+     header: Keep work at work
+     description: Help employees be more productive, and keep corporate and personal apps and data separated.
+   - content-icon: "/themes/Hyde/images/charm4_white.png"
+     header: Enterprise Grade Security for your organization
+     description: Encrypt important files and data to ensure only the right people have access. Identify advanced persistent threats before they cause damage to your organization.
